@@ -1,0 +1,51 @@
+@import 'variable.scss';
+
+// Table Container
+.table-container {
+  .white {
+    color: #EDE7F6;
+  }
+
+  display: flex;
+  flex-direction: row;
+  flex-flow: row wrap;
+  color: #455A64;
+  
+ .card {
+   display: flex;
+   flex: 1;
+   flex-direction: column;
+   justify-content: space-between;
+   margin: 0.5em;
+   padding: 0.5em;
+   min-width: 15em;
+   border: 1px solid #B0BEC5;
+ }
+
+ .card:hover {
+   border-color: $dark-blue;
+ }
+
+ .card-footer {
+   display: flex;
+   justify-content: flex-end;
+   font-style: italic;
+   color: $red;
+ }
+
+ .actions {
+   display: flex;
+   justify-content: flex-end;
+ }
+
+ button.notify {
+   background-color: $green;
+   color: #263238;
+   border: none;
+   padding: 0.5em 1em;
+   text-align: center;
+   text-decoration: none;
+   cursor: pointer;
+   outline: none;
+ }
+}

@@ -4,25 +4,37 @@
   "description": "A simple tool to notify Go-Jek Driver",
   "main": "src/index.js",
   "directories": {
-    "test": "test"
+    "test": "__tests__"
   },
   "dependencies": {
+    "font-awesome": "^4.7.0",
+    "modal": "^1.2.0",
     "node-sass": "^4.8.3",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
     "rxjs": "^5.5.8"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "chance": "^1.0.13",
+    "eslint": "^4.19.1",
     "jest": "^22.4.3",
     "parcel-bundler": "^1.7.0",
     "standard": "^11.0.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "parcel src/index.html"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "globals": [
+      "test",
+      "expect"
+    ]
   },
   "author": "Terry Yuen",
   "license": "MIT"

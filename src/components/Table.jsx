@@ -1,55 +1,27 @@
-import React from 'react'
-import { Observable } from 'rxjs'
+import React, { Component } from 'react'
+import '../styles/table.scss'
 
-class Table extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      rows: props.rows
-    }
-  }
-
-  // componentDidMount () {
-  //   Observable
-  //     .from(this.state.rows)
-  //     .map(row => {
-  //       this.setState({
-  //         tbody:
-  //       })
-  //     })
-  //     .subscribe(
-  //       console.log
-  //     )
-  // }
-
+class TableIndex extends Component {
   render () {
     return (
-      <table className='table'>
-        <thead>
-          <tr>
-            <td className='heading'>ID</td>
-            <td className='heading'>Name</td>
-            <td className='heading'>Phone</td>
-            <td className='heading'>Email</td>
-            <td className='heading'>Suspended</td>
-            <td className='heading'>Action</td>
-          </tr>
-        </thead>
-        <tbody>
-          {this.state.rows.map((row, i) =>
-            <tr key={i}>
-              <td className='data'>{row.id}</td>
-              <td className='data'>{row.name}</td>
-              <td className='data'>{row.phone}</td>
-              <td className='data'>{row.email}</td>
-              <td className='data'>{row.suspended}</td>
-              <td className='action'><button className='action'>Notify</button></td>
-            </tr>
-          )}
-        </tbody>
-      </table>
+      <div className='table-container'>
+        {this.props.rows.map((row, i) =>
+          <div key={row.id} className='card'>
+            <div className='actions'>
+              {row.suspended === 1
+                ? <div className='card-footer'>Suspended</div>
+                : <button className='notify' onClick={(e) => this.props.notify(row, e)}>NOTIFY</button>
+              }
+            </div>
+            <p><i className='fa fa-id-badge' /> ID {row.id}</p>
+            <p><i className='fa fa-user' /> {row.name}</p>
+            <p><i className='fa fa-phone' /> {row.phone}</p>
+            <p><i className='fa fa-envelope' /> {row.email}</p>
+          </div>
+        )}
+      </div>
     )
   }
 }
 
-export default Table
+export default TableIndex
