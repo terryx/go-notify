@@ -12,6 +12,10 @@
   background: rgba(0,0,0,0.5);
   z-index: 100;
 
+  .title {
+    margin-bottom: 0.5em;
+  }
+
   .modal-content {
     display: flex;
     flex-direction: column;

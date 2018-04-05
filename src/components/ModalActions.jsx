@@ -4,8 +4,8 @@ class ModalActions extends React.Component {
   render () {
     return (
       <div className='actions'>
-        <button className='cancel'>CANCEL</button>
-        <button className='send'>SEND</button>
+        <button className='cancel' onClick={this.props.onCancel}>CANCEL</button>
+        <button className='send' onClick={this.props.onSend}>SEND</button>
       </div>
     )
   }

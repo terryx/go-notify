@@ -1,11 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Observable } from 'rxjs'
-import './styles/main.scss'
+import Alert from './components/Alert'
 import Modal from './components/Modal'
 import Search from './components/Search'
 import Table from './components/Table'
 import data from '../data/drivers.json'
+
+import 'font-awesome/css/font-awesome.css'
+import './styles/main.scss'
 
 class Index extends React.Component {
   static defaultProps = {
@@ -14,10 +17,14 @@ class Index extends React.Component {
   }
 
   state = {
+    row: {},
     rows: data,
     searchTerm: '',
     isSuspended: 0,
-    showModal: false
+    showModal: false,
+    showAlert: false,
+    content: '',
+    alertMessage: ''
   }
 
   componentDidMount = () => {
@@ -68,13 +75,39 @@ class Index extends React.Component {
   }
 
   handleNotification = (data) => {
-    console.log(data)
+    this.setState({ showModal: true, row: data, showAlert: false, content: '' })
+  }
+
+  handleModalCancel = (e) => {
+    this.setState({ showModal: false, content: '' })
+  }
+
+  handleModalSend = (e) => {
+    if (this.state.content !== '') {
+      this.setState({ showModal: false, showAlert: true })
+    }
+  }
+
+  handleModalEdit = (e) => {
+    this.setState({ content: e.target.value })
+  }
+
+  handleAlertShow = () => {
+    this.setState({ showModal: false })
   }
 
   render () {
     return (
       <div>
-        <Modal show={this.state.showModal} />
+        <Alert show={this.state.showAlert} content={this.state.content} data={this.state.row} />
+        <Modal
+          show={this.state.showModal}
+          data={this.state.row}
+          content={this.state.content}
+          onCancel={this.handleModalCancel}
+          onEdit={this.handleModalEdit}
+          onSend={this.handleModalSend}
+        />
         <Search searchTerm={this.handleSearchTermChange} checkIsSuspended={this.handleCheckIsSuspended} />
         <Table rows={this.state.rows} notify={this.handleNotification} />
       </div>

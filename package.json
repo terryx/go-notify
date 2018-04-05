@@ -22,16 +22,19 @@
     "chance": "^1.0.13",
     "eslint": "^4.19.1",
     "jest": "^22.4.3",
+    "nightmare": "^3.0.1",
     "parcel-bundler": "^1.7.0",
     "standard": "^11.0.1"
   },
   "scripts": {
-    "test": "jest",
+    "test:unit": "jest unit",
+    "test:ui": "jest acceptance/index.js",
     "start": "parcel src/index.html"
   },
   "standard": {
     "parser": "babel-eslint",
     "globals": [
+      "describe",
       "test",
       "expect"
     ]

@@ -4,21 +4,16 @@ import ModalActions from './ModalActions'
 import '../styles/modal.scss'
 
 class Modal extends React.Component {
-  state = {
-    show: this.props.show
-  }
-
-  toggleSelf (show = false) {
-    this.setState({ show })
-  }
-
   render () {
-    const modalStyle = { display: !this.state.show ? 'flex' : 'none' }
+    const modalStyle = { display: this.props.show ? 'flex' : 'none' }
     return (
       <div className='modal-container' style={modalStyle}>
         <div className='modal-content'>
-          <ModalText />
-          <ModalActions />
+          <div className='title'>
+            To: {this.props.data.name} &#60;{this.props.data.email}&#62;
+          </div>
+          <ModalText content={this.props.content} onEdit={this.props.onEdit} />
+          <ModalActions onCancel={this.props.onCancel} onSend={this.props.onSend} />
         </div>
       </div>
     )
