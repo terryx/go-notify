@@ -1,5 +1,8 @@
 ## Go Notify
-A simple react web app which allow a list of drivers to be notified with customised message
+Gojek frontend interview assignment.
+Create a react app to allow communicate messages personally to drivers via notification
+
+A simple react web app which allow a list of drivers to be notified with customised message.
 
 ## Project Overview
 The notification components consist of a stateful Index component and the rest of child components are stateless.
